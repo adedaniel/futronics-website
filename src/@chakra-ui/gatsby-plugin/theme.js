@@ -52,7 +52,8 @@ const theme = {
       800: "#004b4d",
       900: "#001b1b",
     },
-    black: "#16161D",
+    black: "#0b0e13",
+    lightBlack: "#16161D",
   },
   fonts: {
     body: "Inter, sans-serif",
