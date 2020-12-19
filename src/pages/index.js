@@ -21,61 +21,105 @@ import HeadPhones from "../components/image-exports/headphones"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => {
+function LandingPage() {
   return (
     <Layout>
       <SEO title="Home" />
-      <Box h="calc(100vh - 4rem)" w="full" bg="black">
+      <Box
+        bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608385511/samples/bg-alt_ytcwy5.jpg)"
+        h="100vh"
+        bgSize="cover"
+        bgPos="center"
+        w="full"
+        // bg="black"
+      >
         <Center h="full" w="full">
-          <Container maxW="5xl">
+          <Container maxW={["2xl", "2xl", "3xl", "4xl", "5xl"]}>
             <Flex w="full" align="center">
-              <Stack w="50%">
-                <Heading color="white" fontSize={100}>
+              <Stack
+                align={["center", "center", "start"]}
+                w={["100%", "100%", "50%"]}
+              >
+                <Heading color="white" fontSize={["6xl", 100]}>
                   Live it!!!
                 </Heading>
-                <Text fontSize="lg" color="white">
+                <Text
+                  fontSize="lg"
+                  textAlign={["center", "center", "left"]}
+                  color="white"
+                >
                   We're changing the world with the best quality and affordable
                   audio and visual products
                 </Text>
-                <Flex>
+                <Flex pt={4}>
                   <Button
                     w="fit-content"
                     color="primary.500"
+                    borderColor="primary.500"
                     rightIcon={<ArrowForwardIcon />}
-                    variant="link"
+                    variant="outline"
+                    colorScheme="default"
+                    rounded={0}
                   >
                     Check out our products
                   </Button>
                 </Flex>
               </Stack>
-              <Flex w="50%">
-                <Box w="full">
-                  <HeadPhones width="100%" />
-                </Box>
+              <Flex w={["0%", "0%", "50%"]}>
+                <Box w="full">{/* <HeadPhones width="100%" /> */}</Box>
               </Flex>
             </Flex>
           </Container>
         </Center>
       </Box>
       <Box>
-        <Container id="about" py={24} maxW="5xl">
-          <Heading mb={20} fontSize="5xl" color="primary.500">
+        <Container
+          id="about"
+          py={24}
+          maxW={["2xl", "2xl", "3xl", "4xl", "5xl"]}
+        >
+          <Heading mb={20} fontSize={["4xl", "5xl"]} color="primary.500">
             Who we are
           </Heading>
-          <Flex w="full" h="full" align="center">
-            <Flex pos="relative" w="50%">
-              <Box w="2xs" h="md" bg="primary.300"></Box>
+          <Flex
+            flexDirection={["column", "column", "row"]}
+            w="full"
+            h="full"
+            align="center"
+          >
+            <Flex
+              justify={["center", "center", "left"]}
+              pos="relative"
+              w={["100%", "100%", "50%"]}
+            >
+              <Box
+                bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608387866/samples/about-us-1_vtyerk.jpg)"
+                bgSize="cover"
+                bgRepeat="no-repeat"
+                bgPos="center"
+                w="2xs"
+                h="md"
+                // bg="primary.300"
+              ></Box>
               <Box
                 pos="absolute"
-                right={85}
+                right={55}
+                bgSize="cover"
+                bgRepeat="no-repeat"
+                bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608387902/samples/pexels-ready-made-3921883_y0xqol.jpg)"
+                bgPos="center"
                 top={-8}
                 w="2xs"
                 h="md"
-                bg="green.300"
+                // bg="green.300"
               ></Box>
             </Flex>
-            <Stack w="50%">
-              <Heading mt={-10} color="white" fontSize="5xl">
+            <Stack w={["100%", "100%", "50%"]}>
+              <Heading
+                mt={[12, 12, -10]}
+                color="white"
+                fontSize={["3xl", "4xl", "5xl"]}
+              >
                 Excellence, Quality and Innovation
               </Heading>
               <Text fontSize="lg" color="white">
@@ -90,13 +134,14 @@ const IndexPage = () => {
         </Container>
       </Box>
       <Box bg="black">
-        <Container py={24} maxW="5xl">
+        <Container py={24} maxW={["2xl", "2xl", "3xl", "4xl", "5xl"]}>
           <Stack spacing={12}>
             <Flex align="center" justify="space-between">
-              <Heading fontSize="5xl" color="primary.500">
+              <Heading fontSize={["4xl", "5xl"]} color="primary.500">
                 Categories
               </Heading>
-              <ButtonGroup spacing={6}>
+
+              {/* <ButtonGroup spacing={6}>
                 <IconButton
                   variant="ghost"
                   fontSize="6xl"
@@ -111,7 +156,7 @@ const IndexPage = () => {
                   color="white"
                   icon={<CgArrowLongRight />}
                 />
-              </ButtonGroup>
+              </ButtonGroup> */}
             </Flex>
             <Stack spacing={8}>
               <Stack
@@ -122,54 +167,146 @@ const IndexPage = () => {
                 // bg="blue.300"
                 isInline
               >
-                {Array.from(Array(10).keys()).map(() => (
+                <Box
+                  mr={4}
+                  cursor="pointer"
+                  d="block"
+                  h={["sm", "md"]}
+                  pos="relative"
+                  minW={["2xs", "xs"]}
+                  bg="cyan.500"
+                >
                   <Box
-                    mr={4}
-                    cursor="pointer"
-                    d="block"
-                    h="md"
-                    pos="relative"
-                    minW="xs"
-                    bg="cyan.500"
+                    w="full"
+                    bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    opacity={0.5}
+                    h={24}
+                    p={3}
+                  ></Box>
+                  <Box
+                    w="full"
+                    // bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    // opacity={0.5}
+                    h={24}
+                    py={3}
+                    px={4}
                   >
-                    <Box
-                      w="full"
-                      bg="black"
-                      pos="absolute"
-                      bottom={0}
-                      opacity={0.5}
-                      h={24}
-                      p={3}
-                    ></Box>
-                    <Box
-                      w="full"
-                      // bg="black"
-                      pos="absolute"
-                      bottom={0}
-                      // opacity={0.5}
-                      h={24}
-                      py={3}
-                      px={4}
-                    >
-                      <Stack>
-                        <Heading color="white" fontSize="xl">
-                          Sound Bars
-                        </Heading>
-                        <Flex>
-                          <Button
-                            rightIcon={<BsArrowRight />}
-                            variant="link"
-                            colorScheme="white"
-                            color="white"
-                            fontWeight="light"
-                          >
-                            View Products
-                          </Button>
-                        </Flex>
-                      </Stack>
-                    </Box>
+                    <Stack>
+                      <Heading color="white" fontSize="xl">
+                        Audio
+                      </Heading>
+                      <Flex>
+                        <Button
+                          rightIcon={<BsArrowRight />}
+                          variant="link"
+                          colorScheme="white"
+                          color="white"
+                          fontWeight="light"
+                        >
+                          View Products
+                        </Button>
+                      </Flex>
+                    </Stack>
                   </Box>
-                ))}
+                </Box>
+
+                <Box
+                  mr={4}
+                  cursor="pointer"
+                  d="block"
+                  h={["sm", "md"]}
+                  pos="relative"
+                  minW={["2xs", "xs"]}
+                  bg="cyan.500"
+                >
+                  <Box
+                    w="full"
+                    bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    opacity={0.5}
+                    h={24}
+                    p={3}
+                  ></Box>
+                  <Box
+                    w="full"
+                    // bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    // opacity={0.5}
+                    h={24}
+                    py={3}
+                    px={4}
+                  >
+                    <Stack>
+                      <Heading color="white" fontSize="xl">
+                        Visuals
+                      </Heading>
+                      <Flex>
+                        <Button
+                          rightIcon={<BsArrowRight />}
+                          variant="link"
+                          colorScheme="white"
+                          color="white"
+                          fontWeight="light"
+                        >
+                          View Products
+                        </Button>
+                      </Flex>
+                    </Stack>
+                  </Box>
+                </Box>
+
+                <Box
+                  mr={4}
+                  cursor="pointer"
+                  d="block"
+                  h={["sm", "md"]}
+                  pos="relative"
+                  minW={["2xs", "xs"]}
+                  bg="cyan.500"
+                >
+                  <Box
+                    w="full"
+                    bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    opacity={0.5}
+                    h={24}
+                    p={3}
+                  ></Box>
+                  <Box
+                    w="full"
+                    // bg="black"
+                    pos="absolute"
+                    bottom={0}
+                    // opacity={0.5}
+                    h={24}
+                    py={3}
+                    px={4}
+                  >
+                    <Stack>
+                      <Heading color="white" fontSize="xl">
+                        Wearables
+                      </Heading>
+                      <Flex>
+                        <Button
+                          rightIcon={<BsArrowRight />}
+                          variant="link"
+                          colorScheme="white"
+                          color="white"
+                          fontWeight="light"
+                        >
+                          View Products
+                        </Button>
+                      </Flex>
+                    </Stack>
+                  </Box>
+                </Box>
               </Stack>
               <Flex justify="center">
                 <Button
@@ -186,8 +323,12 @@ const IndexPage = () => {
         </Container>
       </Box>
       <Box>
-        <Container id="contact-us" py={24} maxW="5xl">
-          <Heading mb={6} fontSize="5xl" color="primary.500">
+        <Container
+          id="contact-us"
+          py={24}
+          maxW={["2xl", "2xl", "3xl", "4xl", "5xl"]}
+        >
+          <Heading mb={6} fontSize={["4xl", "5xl"]} color="primary.500">
             Want to get in touch?
           </Heading>
           <Stack justify="center">
@@ -196,7 +337,12 @@ const IndexPage = () => {
               possible.
             </Text>
 
-            <Flex w="full" pt={20} justify="space-between">
+            <Flex
+              w="full"
+              pt={20}
+              flexDirection={["column", "column", "row"]}
+              justify="space-between"
+            >
               <Flex w="full">
                 <Stack spacing={8}>
                   <Stack>
@@ -221,7 +367,7 @@ const IndexPage = () => {
                   </Stack>
                   <Stack>
                     <HStack align="center">
-                      <FiInstagram size={20} color="primary.400" />
+                      <FiInstagram size={20} color="white" />
                       <Heading fontSize="xl" color="primary.400">
                         IG
                       </Heading>
@@ -237,7 +383,7 @@ const IndexPage = () => {
                   </Stack>
                 </Stack>
               </Flex>
-              <Flex w="full">
+              <Flex mt={[12, 12, 0]} w="full">
                 <Stack spacing={8}>
                   <Heading fontSize="2xl" color="primary.400">
                     Our offline stores
@@ -264,4 +410,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default LandingPage

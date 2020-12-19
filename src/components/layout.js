@@ -36,7 +36,7 @@ const Layout = ({ children, ...rest }) => {
         />
       </Helmet> */}
       <Header siteTitle={siteMetadata?.title || `Title`} />
-      <Box pt={16} minH="100vh" bg="gray.800">
+      <Box minH="100vh" bg="lightBlack">
         {children}
       </Box>
       <style jsx global>{`
