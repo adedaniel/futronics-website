@@ -5,15 +5,19 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
+import { Box } from "@chakra-ui/react"
+import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
+import React from "react"
+import { Helmet } from "react-helmet"
+import theme from "../@chakra-ui/gatsby-plugin/theme"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+const Layout = ({ children, ...rest }) => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -25,23 +29,41 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      {/* <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://res.cloudinary.com/adedaniel/raw/upload/v1606838698/Blacker-Text-Regular-trial_fsr9bq.ttf"
+        />
+      </Helmet> */}
+      <Header siteTitle={siteMetadata?.title || `Title`} />
+      <Box pt={16} minH="100vh" bg="gray.800">
+        {children}
+      </Box>
+      <style jsx global>{`
+        html {
+          scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: ${theme.colors.gray[900]};
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: ${theme.colors.gray[700]};
+          border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: ${theme.colors.gray[600]};
+        }
+      `}</style>
     </>
   )
 }
