@@ -7,6 +7,7 @@ import {
   Container,
   Flex,
   Heading,
+  HStack,
   IconButton,
   Link,
   Stack,
@@ -14,6 +15,7 @@ import {
 } from "@chakra-ui/react"
 import React from "react"
 import { BsArrowRight } from "react-icons/bs"
+import { FiInstagram } from "react-icons/fi"
 import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg"
 import HeadPhones from "../components/image-exports/headphones"
 import Layout from "../components/layout"
@@ -215,6 +217,22 @@ const IndexPage = () => {
                     </Heading>
                     <Link href="tel:+2348057111773" color="white" fontSize="xl">
                       (+234)80 571 11 773
+                    </Link>
+                  </Stack>
+                  <Stack>
+                    <HStack align="center">
+                      <FiInstagram size={20} color="primary.400" />
+                      <Heading fontSize="xl" color="primary.400">
+                        IG
+                      </Heading>
+                    </HStack>
+                    <Link
+                      href="https://instagram.com/club_futronics"
+                      color="white"
+                      isExternal
+                      fontSize="xl"
+                    >
+                      @club_futronics
                     </Link>
                   </Stack>
                 </Stack>
