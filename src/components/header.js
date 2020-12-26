@@ -44,7 +44,7 @@ const Header = ({ siteTitle, ...rest }) => {
           </Box>
         </Link>
         <Stack d={["none", "flex"]} spacing={4} isInline>
-          <Link to="#about">
+          <Link to="/#about">
             <Text color="white">ABOUT</Text>
           </Link>
           <Link to="/products">
@@ -74,7 +74,6 @@ const Header = ({ siteTitle, ...rest }) => {
           onClick={() => setOpenNav(!openNav)}
           colorScheme="white"
           fontSize="4xl"
-          color="white"
           icon={<FcMenu />}
         />
       </Flex>
@@ -95,7 +94,7 @@ const Header = ({ siteTitle, ...rest }) => {
           pb={4}
           spacing={4}
         >
-          <Link to="#about">
+          <Link to="/#about">
             <Text textAlign="center" color="white">
               ABOUT
             </Text>

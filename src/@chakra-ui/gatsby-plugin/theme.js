@@ -54,6 +54,7 @@ const theme = {
     },
     black: "#0b0e13",
     lightBlack: "#16161D",
+    darkBlack: "#000",
   },
   fonts: {
     body: "Inter, sans-serif",

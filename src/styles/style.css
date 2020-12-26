@@ -1,0 +1,55 @@
+.image-gallery-slide {
+    width: 330px !important;
+    padding-right: 24px !important;
+}
+.image-gallery.fullscreen-modal {
+    z-index: 10 !important;
+}
+.image-gallery-content.fullscreen .image-gallery-slide{
+    width: 100% !important;
+}
+
+@media(max-width: 575px) {
+    .image-gallery-slide {
+        padding-right: 0px !important;
+    }
+}
+
+.image-gallery-image {
+    max-height: 270px !important;
+}
+
+.image-gallery-content.fullscreen .image-gallery-image {
+    max-height: calc(100vh - 80px) !important;
+}
+
+.image-gallery.fullscreen-modal .image-gallery-image {
+    max-height: calc(100vh - 80px) !important;
+}
+
+.image-gallery.fullscreen-modal .image-gallery-slide {
+    width: 100% !important;
+}
+
+.image-gallery-icon:focus {
+    outline: 2px solid #fab8ba !important;
+}
+
+.image-gallery-icon:hover {
+    color: #fab8ba !important;
+}
+
+
+.DayPickerInput-Overlay {
+    top: 8px !important;
+    width: 100% !important;
+    z-index: 3 !important;
+}
+
+.DayPicker {
+    width: 100% !important;
+}
+
+.DayPicker-Month {
+    width: 72% !important;
+}

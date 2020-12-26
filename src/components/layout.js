@@ -11,6 +11,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Helmet } from "react-helmet"
 import theme from "../@chakra-ui/gatsby-plugin/theme"
+import Footer from "./footer"
 import Header from "./header"
 import "./layout.css"
 
@@ -38,6 +39,7 @@ const Layout = ({ children, ...rest }) => {
       <Header siteTitle={siteMetadata?.title || `Title`} />
       <Box minH="100vh" bg="lightBlack">
         {children}
+        <Footer />
       </Box>
       <style jsx global>{`
         html {
