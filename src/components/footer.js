@@ -55,14 +55,7 @@ export default function Footer() {
                     clubfutronics@gmail.com
                   </Link>
                 </Stack>
-                <Stack>
-                  <Heading fontSize="xl" color="primary.400">
-                    Or on phone:
-                  </Heading>
-                  <Link href="tel:+2348057111773" color="white" fontSize="xl">
-                    (+234)80 571 11 773
-                  </Link>
-                </Stack>
+
                 <Stack>
                   <HStack align="center">
                     <FiInstagram size={20} color="white" />
@@ -93,6 +86,9 @@ export default function Footer() {
                   <Link color="white" fontSize="md">
                     7 Olufunmilola Okikiolu Street, Off Toyin Street, Ikeja,
                     Lagos.
+                  </Link>
+                  <Link href="tel:+2348057111773" color="white" fontSize="sm">
+                    (+234)80 571 11 773
                   </Link>
                 </Stack>
               </Stack>

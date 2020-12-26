@@ -24,7 +24,7 @@ import {
   useDisclosure,
   Input,
 } from "@chakra-ui/react"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { IoIosOptions } from "react-icons/io"
 import Layout from "../../components/layout"
@@ -33,12 +33,21 @@ import ImageGallery from "react-image-gallery"
 import { ChevronRightIcon } from "@chakra-ui/icons"
 import { navigate } from "gatsby"
 import check from "check-types"
+import * as queryString from "query-string"
 
-export default function Products() {
+export default function Products({ location }) {
+  const query = queryString.parse(location.search)
+  console.log(query)
   const [categoryToShow, setCategoryToShow] = useState("All")
   const categories = ["All", "Audio", "Visuals", "Wearables"]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  useEffect(() => {
+    if (query.category) {
+      setCategoryToShow(query.category)
+    }
+  }, [query?.category])
 
   const [productsList, setProductsList] = useState([
     {
@@ -96,7 +105,9 @@ export default function Products() {
                         _hover={{
                           bg: "gray.800",
                         }}
-                        onClick={() => setCategoryToShow(category)}
+                        onClick={() =>
+                          navigate(`/products?category=${category}`)
+                        }
                         key={index}
                         transition="0.2s all"
                         cursor="pointer"
@@ -119,7 +130,7 @@ export default function Products() {
 
           <Box px={0} w={["100%", "100%", "calc(100% - 250px)"]}>
             <Stack color="white">
-              <Flex justify="flex-end">
+              <Flex d={["flex", "flex", "none"]} justify="flex-end">
                 <IconButton
                   variant="ghost"
                   size="lg"
@@ -242,7 +253,7 @@ export default function Products() {
                           bg: "gray.800",
                         }}
                         onClick={() => {
-                          setCategoryToShow(category)
+                          navigate(`/products?category=${category}`)
                           onClose()
                         }}
                         key={index}
