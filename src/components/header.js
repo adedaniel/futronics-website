@@ -52,14 +52,14 @@ const Header = ({ siteTitle, ...rest }) => {
           </Link>
         </Stack>
         <Stack d={["none", "flex"]} isInline>
-          <IconButton
+          {/* <IconButton
             // size="sm"
             _active={{ bg: "gray.700" }}
             _hover={{ bg: "gray.700" }}
             variant="ghost"
             color="white"
             icon={<SearchIcon />}
-          />
+          /> */}
           <Button
             rounded={0}
             onClick={() => navigate("#contact-us")}
@@ -104,7 +104,7 @@ const Header = ({ siteTitle, ...rest }) => {
               PRODUCTS
             </Text>
           </Link>
-          <Button
+          {/* <Button
             // size="sm"
             _active={{ bg: "gray.700" }}
             _hover={{ bg: "gray.700" }}
@@ -114,7 +114,7 @@ const Header = ({ siteTitle, ...rest }) => {
             rightIcon={<SearchIcon />}
           >
             SEARCH
-          </Button>
+          </Button> */}
           <Button
             rounded={0}
             onClick={() => navigate("#contact-us")}

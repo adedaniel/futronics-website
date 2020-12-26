@@ -5,6 +5,7 @@ import {
   ButtonGroup,
   Center,
   Container,
+  Divider,
   Flex,
   Heading,
   HStack,
@@ -20,6 +21,7 @@ import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg"
 import HeadPhones from "../components/image-exports/headphones"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { navigate } from "gatsby"
 
 function LandingPage() {
   return (
@@ -58,6 +60,7 @@ function LandingPage() {
                     borderColor="primary.500"
                     rightIcon={<ArrowForwardIcon />}
                     variant="outline"
+                    onClick={() => navigate("/products")}
                     colorScheme="default"
                     rounded={0}
                   >
@@ -131,6 +134,17 @@ function LandingPage() {
               </Text>
             </Stack>
           </Flex>
+          <Stack spacing={12} mt={6}>
+            <Divider />
+            <Box controls as="video">
+              <source
+                src="https://res.cloudinary.com/adedaniel/video/upload/v1608830611/futronics/WhatsApp_Video_2020-12-11_at_8.54.26_AM_qlwg4c.mp4"
+                type="video/mp4"
+              />
+              {/* <source src="mov_bbb.ogg" type="video/ogg" /> */}
+              Your browser does not support HTML video.
+            </Box>
+          </Stack>
         </Container>
       </Box>
       <Box bg="black">
@@ -174,7 +188,9 @@ function LandingPage() {
                   h={["sm", "md"]}
                   pos="relative"
                   minW={["2xs", "xs"]}
-                  bg="cyan.500"
+                  bgPos="center"
+                  bgSize="cover"
+                  bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608830528/futronics/DSC_5224_v0bv5p.jpg)"
                 >
                   <Box
                     w="full"
@@ -203,6 +219,7 @@ function LandingPage() {
                         <Button
                           rightIcon={<BsArrowRight />}
                           variant="link"
+                          onClick={() => navigate("/products?category=Audio")}
                           colorScheme="white"
                           color="white"
                           fontWeight="light"
@@ -268,7 +285,9 @@ function LandingPage() {
                   h={["sm", "md"]}
                   pos="relative"
                   minW={["2xs", "xs"]}
-                  bg="cyan.500"
+                  bgPos="center"
+                  bgSize="cover"
+                  bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608984984/futronics/WhatsApp_Image_2020-12-26_at_9.32.47_AM_ut7lgm.jpg)"
                 >
                   <Box
                     w="full"
@@ -298,6 +317,9 @@ function LandingPage() {
                           rightIcon={<BsArrowRight />}
                           variant="link"
                           colorScheme="white"
+                          onClick={() =>
+                            navigate("/products?category=Wearables")
+                          }
                           color="white"
                           fontWeight="light"
                         >
@@ -313,6 +335,7 @@ function LandingPage() {
                   rightIcon={<CgArrowLongRight />}
                   colorScheme="primary"
                   rounded={0}
+                  onClick={() => navigate("/products")}
                   w="2xs"
                 >
                   VIEW ALL
