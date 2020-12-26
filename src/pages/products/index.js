@@ -225,8 +225,8 @@ export default function Products() {
               >
                 <Stack
                   h="full"
-                  w="full"
                   justify="center"
+                  w="full"
                   align="center"
                   spacing={16}
                 >
