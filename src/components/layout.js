@@ -8,9 +8,11 @@
 import { Box } from "@chakra-ui/react"
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import theme from "../@chakra-ui/gatsby-plugin/theme"
+import { fetchLocation } from "../utils"
+import { Provider } from "../utils/context"
 import Footer from "./footer"
 import Header from "./header"
 import "./layout.css"
@@ -36,11 +38,13 @@ const Layout = ({ children, ...rest }) => {
           href="https://res.cloudinary.com/adedaniel/raw/upload/v1606838698/Blacker-Text-Regular-trial_fsr9bq.ttf"
         />
       </Helmet> */}
+
       <Header siteTitle={siteMetadata?.title || `Title`} />
       <Box minH="100vh" bg="lightBlack">
         {children}
         <Footer />
       </Box>
+
       <style jsx global>{`
         html {
           scroll-behavior: smooth;

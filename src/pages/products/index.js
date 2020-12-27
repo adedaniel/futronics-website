@@ -24,7 +24,7 @@ import {
   useDisclosure,
   Input,
 } from "@chakra-ui/react"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { IoIosOptions } from "react-icons/io"
 import Layout from "../../components/layout"
@@ -34,14 +34,16 @@ import { ChevronRightIcon } from "@chakra-ui/icons"
 import { navigate } from "gatsby"
 import check from "check-types"
 import * as queryString from "query-string"
+import MyContext from "../../utils/context"
+import { separateWithComma } from "../../utils"
 
 export default function Products({ location }) {
   const query = queryString.parse(location.search)
-  console.log(query)
   const [categoryToShow, setCategoryToShow] = useState("All")
   const categories = ["All", "Audio", "Visuals", "Wearables"]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { inNigeria } = useContext(MyContext)
 
   useEffect(() => {
     if (query.category) {
@@ -56,7 +58,7 @@ export default function Products({ location }) {
       name: "Bluetooth Wireless Home Speakers",
       image:
         "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_8_gyx9ym.jpg",
-      price: "$59.95",
+      price: { naira: 10000, dollar: 26.23 },
       href: "bluetooth-wireless-home-speaker",
       colours: [
         { colourName: "Army Green", colourCode: "green.700" },
@@ -178,7 +180,11 @@ export default function Products({ location }) {
                                 <Text fontSize="lg" fontWeight="bold">
                                   {name}
                                 </Text>
-                                <Text fontSize="sm">{price}</Text>
+                                <Text fontSize="sm">
+                                  {inNigeria
+                                    ? `₦ ${separateWithComma(price.naira)}`
+                                    : `$ ${separateWithComma(price.dollar)}`}
+                                </Text>
                               </Stack>
                               <IconButton
                                 colorScheme="default"
