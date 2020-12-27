@@ -11,7 +11,7 @@ import {
   Tooltip,
   useMediaQuery,
 } from "@chakra-ui/react"
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { BsArrowRight } from "react-icons/bs"
 import Layout from "../../components/layout"
@@ -19,6 +19,8 @@ import SEO from "../../components/seo"
 import ImageGallery from "react-image-gallery"
 import { ChevronLeftIcon } from "@chakra-ui/icons"
 import { navigate } from "gatsby"
+import { fetchLocation } from "../../utils"
+import MyContext from "../../utils/context"
 
 export default function ProductDetails() {
   const productMedia = [
@@ -79,7 +81,17 @@ export default function ProductDetails() {
     },
   ]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
+  const { inNigeria } = useContext(MyContext)
 
+  const triggerPlaceOrder = () => {
+    if (inNigeria) {
+    } else {
+      window.open(
+        "https://www.amazon.co.uk/dp/B08CWQS5FJ?ref=myi_title_dp",
+        "_self"
+      )
+    }
+  }
   return (
     <Layout>
       <Helmet>
@@ -137,7 +149,7 @@ export default function ProductDetails() {
                   BLUETOOTH WIRELESS HOME SPEAKERS
                 </Heading>
                 <Text fontWeight="bold" fontSize="xl">
-                  $29.95
+                  {inNigeria ? `₦ 10,000` : `$ 26.23`}
                 </Text>
               </Stack>
               {isMobile && (
@@ -157,8 +169,8 @@ export default function ProductDetails() {
                   />
 
                   {productMedia
-                    .filter(({ url, type }) => type === "video")
-                    .map(({ type, url }, index) => (
+                    .filter(({ type }) => type === "video")
+                    .map(({ url }, index) => (
                       <Box key={index} controls as="video">
                         <source src={url} type="video/mp4" />
                         {/* <source src="mov_bbb.ogg" type="video/ogg" /> */}
@@ -171,7 +183,7 @@ export default function ProductDetails() {
               <Stack w="full">
                 <Flex justify="space-between">
                   <HStack>
-                    <Text>Color:</Text>
+                    <Text>Colors:</Text>
                     {/* <Text color="gray.300">Black</Text> */}
                   </HStack>
                   <HStack>
@@ -208,6 +220,7 @@ export default function ProductDetails() {
                     rounded={0}
                     size="lg"
                     h={16}
+                    onClick={triggerPlaceOrder}
                     colorScheme="primary"
                   >
                     PLACE ORDER

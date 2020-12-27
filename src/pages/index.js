@@ -184,6 +184,7 @@ function LandingPage() {
                 <Box
                   mr={4}
                   cursor="pointer"
+                  onClick={() => navigate("/products?category=Audio")}
                   d="block"
                   h={["sm", "md"]}
                   pos="relative"
@@ -219,7 +220,6 @@ function LandingPage() {
                         <Button
                           rightIcon={<BsArrowRight />}
                           variant="link"
-                          onClick={() => navigate("/products?category=Audio")}
                           colorScheme="white"
                           color="white"
                           fontWeight="light"
@@ -283,6 +283,7 @@ function LandingPage() {
                   cursor="pointer"
                   d="block"
                   h={["sm", "md"]}
+                  onClick={() => navigate("/products?category=Wearables")}
                   pos="relative"
                   minW={["2xs", "xs"]}
                   bgPos="center"
@@ -317,9 +318,6 @@ function LandingPage() {
                           rightIcon={<BsArrowRight />}
                           variant="link"
                           colorScheme="white"
-                          onClick={() =>
-                            navigate("/products?category=Wearables")
-                          }
                           color="white"
                           fontWeight="light"
                         >
