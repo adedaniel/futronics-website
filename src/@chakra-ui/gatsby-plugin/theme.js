@@ -62,6 +62,10 @@ const theme = {
     mono: "Inter, sans-serif",
   },
   breakpoints,
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: false,
+  },
 }
 
 export default extendTheme(theme)

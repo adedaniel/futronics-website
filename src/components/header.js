@@ -5,6 +5,7 @@ import { Link, navigate } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useEffect, useState } from "react"
 import Logo from "./image-exports/logo"
+import { DarkModeSwitch } from "./dark-mode-switch"
 
 const Header = ({ siteTitle, ...rest }) => {
   const [pastTop, setPastTop] = useState(false)
@@ -52,6 +53,7 @@ const Header = ({ siteTitle, ...rest }) => {
           </Link>
         </Stack>
         <Stack d={["none", "flex"]} isInline>
+          <DarkModeSwitch />
           {/* <IconButton
             // size="sm"
             _active={{ bg: "gray.700" }}

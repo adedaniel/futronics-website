@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
   Tooltip,
+  useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react"
 import React, { useContext, useEffect, useState } from "react"
@@ -21,6 +22,7 @@ import { ChevronLeftIcon } from "@chakra-ui/icons"
 import { navigate } from "gatsby"
 import { fetchLocation } from "../../utils"
 import MyContext from "../../utils/context"
+import PlaceOrderDrawer from "../../components/place-order-drawer"
 
 export default function ProductDetails() {
   const productMedia = [
@@ -82,9 +84,11 @@ export default function ProductDetails() {
   ]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
   const { inNigeria } = useContext(MyContext)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const triggerPlaceOrder = () => {
     if (inNigeria) {
+      onOpen()
     } else {
       window.open(
         "https://www.amazon.co.uk/dp/B08CWQS5FJ?ref=myi_title_dp",
@@ -231,6 +235,7 @@ export default function ProductDetails() {
           </Box>
         </Stack>
       </Box>
+      <PlaceOrderDrawer isOpen={isOpen} onClose={onClose} />
     </Layout>
   )
 }

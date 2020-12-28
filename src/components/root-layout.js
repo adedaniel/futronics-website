@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { fetchLocation } from "../utils"
 import { Provider } from "../utils/context"
+import { DarkModeSwitch } from "./dark-mode-switch"
 
 export default function RootLayout({ children }) {
   const [inNigeria, setInNigeria] = useState(false)
