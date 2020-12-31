@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.0.0",
     "axios": "^0.21.1",
     "check-types": "^11.1.2",
+    "emailjs-com": "^2.6.4",
     "emotion-theming": "^11.0.0",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.26.1",

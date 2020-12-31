@@ -14,7 +14,7 @@ const theme = {
     ...chakraTheme.colors,
     blue: {
       ...chakraTheme.colors.blue,
-      500: "#004b4d",
+      500: "#16161D",
     },
     primary: {
       50: "#ffe2ec",
