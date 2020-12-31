@@ -3,7 +3,7 @@ import { FcMenu } from "react-icons/fc"
 import { Box, Button, Flex, IconButton, Stack, Text } from "@chakra-ui/react"
 import { Link, navigate } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import Logo from "./image-exports/logo"
 import { DarkModeSwitch } from "./dark-mode-switch"
 
@@ -138,4 +138,4 @@ Header.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default memo(Header)

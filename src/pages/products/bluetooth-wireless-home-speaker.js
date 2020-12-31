@@ -6,6 +6,7 @@ import {
   Heading,
   HStack,
   Image,
+  Input,
   Stack,
   Text,
   Tooltip,
@@ -20,80 +21,94 @@ import SEO from "../../components/seo"
 import ImageGallery from "react-image-gallery"
 import { ChevronLeftIcon } from "@chakra-ui/icons"
 import { navigate } from "gatsby"
-import { fetchLocation } from "../../utils"
+import { fetchLocation, separateWithComma } from "../../utils"
 import MyContext from "../../utils/context"
 import PlaceOrderDrawer from "../../components/place-order-drawer"
 
 export default function ProductDetails() {
-  const productMedia = [
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608830528/futronics/DSC_5224_v0bv5p.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/video/upload/v1608830605/futronics/WhatsApp_Video_2020-12-11_at_8.55.53_AM_npddj9.mp4",
-      type: "video",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_2_nmbmpe.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_1_qop0uf.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831362/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_9_ufcrvm.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831360/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_3_f49rgw.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608830551/futronics/DSC_5288_wpfe0f.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608830550/futronics/DSC_5346_1_mnhxyg.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608830530/futronics/DSC_5423_zsoxlz.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_7_l6yabp.jpg",
-      type: "image",
-    },
-    {
-      url:
-        "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_4_tuquby.jpg",
-      type: "image",
-    },
-  ]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
   const { inNigeria } = useContext(MyContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const [product, setProduct] = useState({
+    id: 1,
+    category: "Audio",
+    name: "Bluetooth Wireless Home Speakers",
+    image:
+      "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_8_gyx9ym.jpg",
+    productMedia: [
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608830528/futronics/DSC_5224_v0bv5p.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/video/upload/v1608830605/futronics/WhatsApp_Video_2020-12-11_at_8.55.53_AM_npddj9.mp4",
+        type: "video",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_2_nmbmpe.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_1_qop0uf.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608831362/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_9_ufcrvm.jpg",
+        type: "image",
+      },
+
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608830551/futronics/DSC_5288_wpfe0f.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608830550/futronics/DSC_5346_1_mnhxyg.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608830530/futronics/DSC_5423_zsoxlz.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_7_l6yabp.jpg",
+        type: "image",
+      },
+      {
+        url:
+          "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_4_tuquby.jpg",
+        type: "image",
+      },
+    ],
+    price: { naira: 9999, dollar: 26.23 },
+    href: "bluetooth-wireless-home-speaker",
+    externalLink: "https://www.amazon.co.uk/dp/B08CWQS5FJ?ref=myi_title_dp",
+    colours: [
+      { colourName: "Army Green", colourCode: "green.700" },
+      { colourName: "Black", colourCode: "darkBlack" },
+      { colourName: "Black and Gold", colourCode: "orange.200" },
+    ],
+  })
+
+  const [number, setNumber] = useState(1)
+  const [selectedColour, setSelectedColour] = useState(
+    product.colours[1].colourName
+  )
 
   const triggerPlaceOrder = () => {
     if (inNigeria) {
       onOpen()
     } else {
-      window.open(
-        "https://www.amazon.co.uk/dp/B08CWQS5FJ?ref=myi_title_dp",
-        "_self"
-      )
+      window.open(product.externalLink, "_self")
     }
   }
   return (
@@ -105,7 +120,7 @@ export default function ProductDetails() {
         />
         {/* <link rel="stylesheet" href="../styles/style.css" /> */}
       </Helmet>
-      <SEO title="Bluetooth Wireless Home Speakers" />
+      <SEO title={product.name} />
       <Box pos="relative" w="full" pt={[24, 24, 32]} mb={[16, 16, 24]}>
         <Flex px="5%" mb={10}>
           <Button
@@ -121,7 +136,7 @@ export default function ProductDetails() {
           {!isMobile && (
             <Box w="65%">
               <Stack spacing={10}>
-                {productMedia.map(({ type, url }, index) =>
+                {product?.productMedia.map(({ type, url }, index) =>
                   type === "image" ? (
                     <Image
                       key={index}
@@ -149,11 +164,11 @@ export default function ProductDetails() {
           >
             <Stack spacing={16} pt={4}>
               <Stack>
-                <Heading textTransform="uppercase">
-                  BLUETOOTH WIRELESS HOME SPEAKERS
-                </Heading>
+                <Heading textTransform="uppercase">{product?.name}</Heading>
                 <Text fontWeight="bold" fontSize="xl">
-                  {inNigeria ? `₦ 10,000` : `$ 26.23`}
+                  {inNigeria
+                    ? `₦ ${separateWithComma(product?.price.naira)}`
+                    : `$ ${separateWithComma(product?.price.dollar)}`}
                 </Text>
               </Stack>
               {isMobile && (
@@ -163,7 +178,7 @@ export default function ProductDetails() {
                     showThumbnails={false}
                     showIndex
                     showBullets
-                    items={productMedia
+                    items={product?.productMedia
                       .filter(({ url, type }) => type === "image")
                       .map(({ type, url }) => ({
                         original: url,
@@ -172,7 +187,7 @@ export default function ProductDetails() {
                       }))}
                   />
 
-                  {productMedia
+                  {product?.productMedia
                     .filter(({ type }) => type === "video")
                     .map(({ url }, index) => (
                       <Box key={index} controls as="video">
@@ -183,59 +198,132 @@ export default function ProductDetails() {
                     ))}
                 </Stack>
               )}
+              <form
+                onSubmit={event => {
+                  event.preventDefault()
+                  triggerPlaceOrder()
+                }}
+                action="submit"
+              >
+                <Stack w="full">
+                  <Flex justify="space-between">
+                    <HStack>
+                      <Text>Colors:</Text>
+                      {/* <Text color="gray.300">Black</Text> */}
+                    </HStack>
+                    <HStack>
+                      {product?.colours?.map(
+                        ({ colourName, colourCode }, index) => (
+                          <Tooltip
+                            key={index}
+                            placement="top"
+                            label={colourName}
+                            aria-label={colourName}
+                          >
+                            <Box
+                              cursor="pointer"
+                              onClick={() => setSelectedColour(colourName)}
+                              boxSize={6}
+                              border={
+                                selectedColour == colourName
+                                  ? "3px solid"
+                                  : "none"
+                              }
+                              borderColor={
+                                selectedColour == colourName
+                                  ? "primary.500"
+                                  : "none"
+                              }
+                              rounded="full"
+                              bg={colourCode}
+                            />
+                          </Tooltip>
+                        )
+                      )}
+                    </HStack>
+                  </Flex>
+                  <Divider />
+                  {inNigeria && (
+                    <Stack>
+                      <HStack pt={6} w="full">
+                        <Button
+                          onClick={() => {
+                            number > 0 && setNumber(parseInt(number) - 1)
+                          }}
+                          size="lg"
+                          rounded={0}
+                          colorScheme="primary"
+                        >
+                          -
+                        </Button>
+                        <Input
+                          size="lg"
+                          textAlign="center"
+                          rounded={0}
+                          min={1}
+                          isRequired
+                          variant="flushed"
+                          type="number"
+                          value={number}
+                          onChange={event => setNumber(event.target.value)}
+                        />
+                        <Button
+                          onClick={() => {
+                            setNumber(parseInt(number) + 1)
+                          }}
+                          size="lg"
+                          rounded={0}
+                          colorScheme="primary"
+                        >
+                          +
+                        </Button>
+                      </HStack>
+                      {parseInt(number) > 0 && (
+                        <Flex align="center" justify="space-between">
+                          <HStack></HStack>
+                          <HStack>
+                            <Text>Total:</Text>
+                            <Text fontWeight="bold" fontSize="sm">
+                              {`₦ ${separateWithComma(
+                                product?.price?.naira * parseInt(number)
+                              )}`}
+                            </Text>
+                          </HStack>
+                        </Flex>
+                      )}
+                    </Stack>
+                  )}
 
-              <Stack w="full">
-                <Flex justify="space-between">
-                  <HStack>
-                    <Text>Colors:</Text>
-                    {/* <Text color="gray.300">Black</Text> */}
-                  </HStack>
-                  <HStack>
-                    <Tooltip
-                      placement="top"
-                      label="Army Green"
-                      aria-label="Army Green"
+                  <Flex w="full" pt={6}>
+                    <Button
+                      isFullWidth
+                      rounded={0}
+                      size="lg"
+                      h={16}
+                      type="submit"
+                      colorScheme="primary"
                     >
-                      <Box
-                        boxSize={6}
-                        rounded="full"
-                        // border="2px solid"
-                        // borderColor="primary.700"
-                        // cursor="pointer"
-                        bg="green.700"
-                      />
-                    </Tooltip>
-                    <Tooltip placement="top" label="Black" aria-label="Black">
-                      <Box boxSize={6} rounded="full" bg="darkBlack" />
-                    </Tooltip>
-                    <Tooltip
-                      placement="top"
-                      label="Black and Gold"
-                      aria-label="Black and Gold"
-                    >
-                      <Box boxSize={6} rounded="full" bg="orange.200" />
-                    </Tooltip>
-                  </HStack>
-                </Flex>
-                <Divider />
-                <Flex w="full" pt={12}>
-                  <Button
-                    isFullWidth
-                    rounded={0}
-                    size="lg"
-                    h={16}
-                    onClick={triggerPlaceOrder}
-                    colorScheme="primary"
-                  >
-                    PLACE ORDER
-                  </Button>
-                </Flex>
-              </Stack>
+                      PLACE ORDER
+                    </Button>
+                  </Flex>
+                </Stack>
+              </form>
             </Stack>
           </Box>
         </Stack>
       </Box>
-      <PlaceOrderDrawer isOpen={isOpen} onClose={onClose} />
+      <PlaceOrderDrawer
+        orderedProduct={{
+          ...product,
+          totalPrice: `₦ ${separateWithComma(
+            product?.price?.naira * parseInt(number)
+          )}`,
+          number: number,
+          variant: selectedColour,
+        }}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </Layout>
   )
 }

@@ -58,8 +58,62 @@ export default function Products({ location }) {
       name: "Bluetooth Wireless Home Speakers",
       image:
         "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_8_gyx9ym.jpg",
-      price: { naira: 10000, dollar: 26.23 },
+      productMedia: [
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608830528/futronics/DSC_5224_v0bv5p.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/video/upload/v1608830605/futronics/WhatsApp_Video_2020-12-11_at_8.55.53_AM_npddj9.mp4",
+          type: "video",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_2_nmbmpe.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_1_qop0uf.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608831362/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_9_ufcrvm.jpg",
+          type: "image",
+        },
+
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608830551/futronics/DSC_5288_wpfe0f.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608830550/futronics/DSC_5346_1_mnhxyg.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608830530/futronics/DSC_5423_zsoxlz.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_7_l6yabp.jpg",
+          type: "image",
+        },
+        {
+          url:
+            "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_4_tuquby.jpg",
+          type: "image",
+        },
+      ],
+      price: { naira: 9999, dollar: 26.23 },
       href: "bluetooth-wireless-home-speaker",
+      externalLink: "https://www.amazon.co.uk/dp/B08CWQS5FJ?ref=myi_title_dp",
       colours: [
         { colourName: "Army Green", colourCode: "green.700" },
         { colourName: "Black", colourCode: "darkBlack" },
