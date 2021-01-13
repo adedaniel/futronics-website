@@ -152,7 +152,7 @@ function LandingPage() {
           <Stack spacing={12}>
             <Flex align="center" justify="space-between">
               <Heading fontSize={["4xl", "5xl"]} color="primary.500">
-                Categories
+                Products
               </Heading>
 
               {/* <ButtonGroup spacing={6}>
@@ -283,7 +283,7 @@ function LandingPage() {
                   cursor="pointer"
                   d="block"
                   h={["sm", "md"]}
-                  onClick={() => navigate("/products?category=Wearables")}
+                  onClick={() => navigate("/products?category=Accessories")}
                   pos="relative"
                   minW={["2xs", "xs"]}
                   bgPos="center"
@@ -311,7 +311,7 @@ function LandingPage() {
                   >
                     <Stack>
                       <Heading color="white" fontSize="xl">
-                        Wearables
+                        Accessories
                       </Heading>
                       <Flex>
                         <Button
