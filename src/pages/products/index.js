@@ -22,6 +22,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
   Input,
 } from "@chakra-ui/react"
 import React, { useContext, useEffect, useState } from "react"
@@ -40,7 +45,8 @@ import { separateWithComma } from "../../utils"
 export default function Products({ location }) {
   const query = queryString.parse(location.search)
   const [categoryToShow, setCategoryToShow] = useState("All")
-  const categories = ["All", "Audio", "Visuals", "Wearables"]
+  const [subCategoryToShow, setSubCategoryToShow] = useState("")
+  const categories = ["All", "Audio", "Visuals", "Accessories"]
   const [isMobile] = useMediaQuery("(max-width: 767px)")
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { inNigeria } = useContext(MyContext)
@@ -49,13 +55,18 @@ export default function Products({ location }) {
     if (query.category) {
       setCategoryToShow(query.category)
     }
+    if (query.subCategory) {
+      setSubCategoryToShow(query.subCategory)
+    }
   }, [query?.category])
 
   const [productsList, setProductsList] = useState([
     {
       id: 1,
       category: "Audio",
+      subCategory: "Bluetooth Wireless Home Speakers",
       name: "Bluetooth Wireless Home Speakers",
+
       image:
         "https://res.cloudinary.com/adedaniel/image/upload/v1608831361/futronics/WhatsApp_Image_2020-12-24_at_6.32.01_PM_8_gyx9ym.jpg",
       productMedia: [
@@ -125,7 +136,12 @@ export default function Products({ location }) {
   const filterByCategory = ({ category }) =>
     categoryToShow !== "All" ? category === categoryToShow : true //If category is 'All', return true, else filter by selected category
 
-  const productsToDisplay = productsList.filter(filterByCategory)
+  const filterBySubCategory = ({ subCategory }) =>
+    subCategoryToShow ? subCategory === subCategoryToShow : true //If category is 'All', return true, else filter by selected category
+
+  const productsToDisplay = productsList
+    .filter(filterByCategory)
+    .filter(filterBySubCategory)
   return (
     <Layout>
       <SEO title="Products" />
@@ -151,31 +167,78 @@ export default function Products({ location }) {
                   pt={4}
                 >
                   <Stack spacing={0} w="full">
-                    {categories.map((category, index) => (
-                      <Box
-                        backgroundColor={
-                          categoryToShow === category
-                            ? "gray.700"
-                            : "transparent"
-                        }
-                        _hover={{
-                          bg: "gray.800",
-                        }}
-                        onClick={() =>
-                          navigate(`/products?category=${category}`)
-                        }
-                        key={index}
-                        transition="0.2s all"
-                        cursor="pointer"
-                      >
-                        <Stack py={3}>
-                          <Text fontSize="xl" pl={4}>
-                            {category}
-                          </Text>
-                        </Stack>
-                        <Divider />
-                      </Box>
-                    ))}
+                    <Accordion allowToggle>
+                      {categories.map((category, index) => (
+                        <AccordionItem key={index}>
+                          <AccordionButton
+                            onClick={() =>
+                              navigate(`/products?category=${category}`)
+                            }
+                          >
+                            <Box flex="1" textAlign="left">
+                              {category}
+                            </Box>
+                            <AccordionIcon />
+                          </AccordionButton>
+                          <AccordionPanel px={0} py={0} pb={4}>
+                            <Stack>
+                              {categoryToShow !== "All" &&
+                                productsToDisplay
+                                  .map(({ subCategory }) => subCategory)
+                                  .map((subCategory, index) => (
+                                    <Stack
+                                      cursor="pointer"
+                                      onClick={() =>
+                                        navigate(
+                                          `/products?category=${category}&subCategory=${subCategory}`
+                                        )
+                                      }
+                                      px={2}
+                                      w="full"
+                                      _hover={{
+                                        bg: "gray.800",
+                                      }}
+                                      transition="0.2s all"
+                                    >
+                                      <Text
+                                        py={2}
+                                        fontSize="sm"
+                                        color="gray.300"
+                                        key={index}
+                                      >
+                                        {subCategory}
+                                      </Text>
+                                      <Divider />
+                                    </Stack>
+                                  ))}
+                            </Stack>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        // <Box
+                        //   backgroundColor={
+                        //     categoryToShow === category
+                        //       ? "gray.700"
+                        //       : "transparent"
+                        //   }
+                        //   _hover={{
+                        //     bg: "gray.800",
+                        //   }}
+                        //   onClick={() =>
+                        //     navigate(`/products?category=${category}`)
+                        //   }
+                        //   key={index}
+                        //   transition="0.2s all"
+                        //   cursor="pointer"
+                        // >
+                        //   <Stack py={3}>
+                        //     <Text fontSize="xl" pl={4}>
+                        //       {category}
+                        //     </Text>
+                        //   </Stack>
+                        //   <Divider />
+                        // </Box>
+                      ))}
+                    </Accordion>
                   </Stack>
                 </Stack>
 
@@ -224,7 +287,7 @@ export default function Products({ location }) {
                               bgImage={`url(${image})`}
                               w="full"
                               backgroundPosition="center"
-                              backgroundSize="cover"
+                              backgroundSize="140%"
                               backgroundRepeat="no-repeat"
                               h="270px"
                               //   bg="red.200"
@@ -258,6 +321,7 @@ export default function Products({ location }) {
                                   aria-label={colourName}
                                 >
                                   <Box
+                                    cursor="initial"
                                     boxSize={5}
                                     rounded="full"
                                     bg={colourCode}

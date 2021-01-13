@@ -25,3 +25,46 @@ body {
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
 }
+
+
+.image-gallery-slide {
+    width: 400px !important;
+    padding-right: 1px !important;
+}
+.image-gallery.fullscreen-modal {
+    z-index: 4 !important;
+}
+.image-gallery-content.fullscreen .image-gallery-slide{
+    width: 100% !important;
+}
+
+@media(max-width: 575px) {
+    .image-gallery-slide {
+        padding-right: 0px !important;
+    }
+}
+
+.image-gallery-image {
+    max-height: 300px !important;
+}
+
+.image-gallery-content.fullscreen .image-gallery-image {
+    max-height: calc(100vh - 80px) !important;
+}
+
+.image-gallery.fullscreen-modal .image-gallery-image {
+    max-height: calc(100vh - 80px) !important;
+}
+
+.image-gallery.fullscreen-modal .image-gallery-slide {
+    width: 100% !important;
+}
+
+.image-gallery-icon:focus {
+    outline: 2px solid white !important;
+}
+
+.image-gallery-icon:hover {
+    color: white !important;
+}
+
