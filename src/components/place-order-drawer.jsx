@@ -85,18 +85,18 @@ export default function PlaceOrderDrawer({ isOpen, onClose, orderedProduct }) {
 
     emailjs
       .send(
-        "service_w9rf974",
-        "template_eq5sdbd",
+        "futronics",
+        "template_0lg43r9",
         adminTemplateParams,
-        "user_gdjWdacJsgrJx2glMs0jj"
+        "user_UjRhOLzcPXE1Ysrp7EXQV"
       )
       .then(response => {
         emailjs
           .send(
-            "service_w9rf974",
-            "template_y9pfpqa",
+            "futronics",
+            "template_yw9ysyc",
             userTemplateParams,
-            "user_gdjWdacJsgrJx2glMs0jj"
+            "user_UjRhOLzcPXE1Ysrp7EXQV"
           )
           .then(response => {
             setIsLoading(false)
