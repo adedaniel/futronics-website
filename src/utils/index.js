@@ -3,7 +3,9 @@ import axios from "axios"
 export const fetchLocation = () => {
   return new Promise((resolve, reject) => {
     axios
-      .get("https://ipapi.co/json/")
+      .get(
+        "https://api.geoapify.com/v1/ipinfo?apiKey=da5eda2b65364ea5a92e8ef0742b2f5d"
+      )
       .then(({ data }) => {
         resolve(data)
       })

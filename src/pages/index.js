@@ -26,7 +26,7 @@ import { navigate } from "gatsby"
 function LandingPage() {
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Live it!" />
       <Box
         bgImage="url(https://res.cloudinary.com/adedaniel/image/upload/v1608385511/samples/bg-alt_ytcwy5.jpg)"
         h="100vh"

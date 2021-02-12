@@ -8,8 +8,8 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     fetchLocation()
-      .then(({ country_name }) => {
-        if (country_name === "Nigeria") {
+      .then(({ country }) => {
+        if (country?.name === "Nigeria") {
           setInNigeria(true)
         }
       })
